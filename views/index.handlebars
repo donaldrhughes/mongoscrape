@@ -1,0 +1,82 @@
+<div id="home">
+  <div class="container bg-dark">
+
+
+
+    <div class="row bg-secondary mt-1 mb-1">
+      <div class="col-12 text-center text-light mb-1">
+        <h2><b>Articles</b></h2>
+      </div>
+    </div>
+
+    <ul id="articlesUl" class="list-group mt-1">
+
+      {{#each articles}}
+      <div class="border bg-light m-1 text-justify">
+        <div class="m-2">
+          <li><b>Headline:</b> {{this.aText}}</li>
+          <li><b>Summary:</b> {{this.aSummary}}</li>
+          <li><b></b> <a href="{{this.aUrl}}">Link to Story</a></li>
+          <li>Notes: <div class="notes">{{this.note}}</div>
+          </li>
+          <li><b>ID: </b> {{this.id}}</li>
+        </div>
+      </div>
+      <p class="bg-white"></p>
+      <div class="row">
+        <div class="col-10 offset-1">
+
+          {{!-- {{#each notes}}
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-9">
+            <div class="note">
+
+              <ul id="notesUl" class="list-group ">
+                <div class="border bg-light m-1 text-justify">
+                  <div class="m-1">
+                     <li><b>Title:</b> {{this.nHead}}</li>
+                    <li><b>Notes:</b> {{this.nBody}}</li>
+                  </div>
+              </ul>
+              {{/each}}
+
+            </div> --}}
+
+          <div class="noteAdd">
+
+
+            <div class="col-4"></div>
+            <div class="col">
+
+              <textarea class="form-control addNote" id="{{this.id}}" aria-describedby="addNote"
+                placeholder="Add a New Note"></textarea>
+            </div>
+            <div class="col-4"></div>
+
+            <div class="row m-1">
+              <div class="col "></div>
+              <div class="col offset-1">
+
+                <button id="#" data-id="{{this.id}}" class="btn btn-primary submitBtn">Submit</button>
+                <button id="#" data-id="{{this.id}}" class="btn btn-danger removeBtn">Remove</button>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      {{/each}}
+
+    </ul>
+
+
+  </div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
