@@ -5,7 +5,10 @@
 
     <div class="row bg-secondary mt-1 mb-1">
       <div class="col-12 text-center text-light mb-1">
-        <h2><b>Articles</b></h2>
+        <h2><b>Scrape Articles From NPR.org</b></h2>
+        <button class="btn btn-submit" id="btn-scrape">Scrape Articles</button>
+        <button class="btn btn-submit" id="btn-remove">Delete Articles</button>
+        
       </div>
     </div>
 
@@ -17,31 +20,18 @@
           <li><b>Headline:</b> {{this.aText}}</li>
           <li><b>Summary:</b> {{this.aSummary}}</li>
           <li><b></b> <a href="{{this.aUrl}}">Link to Story</a></li>
-          <li>Notes: <div class="notes">{{this.note}}</div>
+          {{!-- <li>Notes: <div class="notes">{{this.note}}</div> --}}
           </li>
           <li><b>ID: </b> {{this.id}}</li>
         </div>
       </div>
-      <p class="bg-white"></p>
+
+
+      {{!-- <p class="bg-white"></p>
       <div class="row">
         <div class="col-10 offset-1">
 
-          {{!-- {{#each notes}}
-        <div class="row">
-          <div class="col-3"></div>
-          <div class="col-9">
-            <div class="note">
 
-              <ul id="notesUl" class="list-group ">
-                <div class="border bg-light m-1 text-justify">
-                  <div class="m-1">
-                     <li><b>Title:</b> {{this.nHead}}</li>
-                    <li><b>Notes:</b> {{this.nBody}}</li>
-                  </div>
-              </ul>
-              {{/each}}
-
-            </div> --}}
 
           <div class="noteAdd">
 
@@ -67,7 +57,7 @@
 
           </div>
         </div>
-      </div>
+      </div> --}}
       {{/each}}
 
     </ul>

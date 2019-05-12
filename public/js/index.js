@@ -1,22 +1,29 @@
-$(".submitBtn").on("click", function () {
-    var id = $(this).attr("data-id");
-    var note = $("#" + id).val();
-   
-    console.log(note);
+$("#btn-scrape").on("click", function () {
+
     $.ajax({
-        method: "POST",
-        url: "/notes/" + id,
-        data: {
-            note: note
-        }
+        method: "GET",
+        url: "/scrape"
 
     })
         .then(function (data) {
+            window.location.href = "/";
             console.log(data);
 
-         
         });
 
-    $("#addNote").val("");
+});
+
+$("#btn-remove").on("click", function () {
+
+    $.ajax({
+        method: "GET",
+        url: "/removeall"
+       
+    })
+        .then(function (data) {
+            window.location.href = "/";
+            console.log(data);
+
+        });
 
 });

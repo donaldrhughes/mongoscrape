@@ -1,14 +1,11 @@
 //Dependencies
 //=============================================
-var cheerio = require("cheerio");
-var axios = require("axios");
+
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var express = require("express");
 var exphbs = require("express-handlebars");
 
-//Require all models
-var db = require("./models");
 
 //Start dynamic port assign
 var PORT = process.env.PORT || 3000;
@@ -37,7 +34,7 @@ app.use(express.static("public"));
 
 //Use the mLab else use localhost for db
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines2";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines3";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 //extra code which uses createIndexes since unique:true without this line is deprecated

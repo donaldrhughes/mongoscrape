@@ -10,7 +10,6 @@ var ArticleSchema = new Schema({
   aText: {
     type: String,
     required: true,
- 
     unique : true
   },
 
@@ -27,13 +26,8 @@ var ArticleSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  },
-  note: {
-    type: Schema.Types.ObjectId,
-    ref: "Note",
-    notes: ""
-    
   }
+
   
 });
 

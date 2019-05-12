@@ -1,10 +1,8 @@
 var db = require("../models/Article");
-var Note = require("../models/Note");
 var cheerio = require("cheerio");
 var axios = require("axios");
 
 module.exports = function (app) {
-
     app.get("/articles", function (req, res) {
 
         db.find({})
@@ -16,13 +14,10 @@ module.exports = function (app) {
 
                 res.json(err);
             });
-
     });
 
 
     app.get("/scrape", function (req, res) {
-        console.log(db)
-
         //Create URL for Axios request
         var responseURL = "https://www.npr.org/sections/news/";
         var articles = [];
@@ -32,10 +27,8 @@ module.exports = function (app) {
             if (err) { throw err } else {
                 //Load HTML to cheerio
                 var $ = cheerio.load(response.data);
+
                 //all api info for request URL
-
-                console.log("======================================================")
-
                 $("article").each(function (i, element) {
                     var articleObj = {
                         id: "",
@@ -43,7 +36,7 @@ module.exports = function (app) {
                         aSummary: "",
                         aUrl: "",
                         note: ""
-                        
+
                     };
                     var headline = $(element).find("h2").text()
 
@@ -59,10 +52,9 @@ module.exports = function (app) {
                     articles.push(articleObj);
 
 
-
                     db.create(articleObj)
                         .then(function (dbArticle) {
-                        
+
                             console.log("Article Created")
                         })
                         .catch(function (err) {
@@ -70,37 +62,27 @@ module.exports = function (app) {
                             console.log(err);
                         });
                 })
-                console.log("======================================================")
 
                 res.send(articles);
-                // res.send("scrape completed")
             }
         });
 
-    })
+    });
+
+    app.get("/removeall", function (req, res) {
 
 
-    app.post("/notes/:id", function (req, res) {
-        console.log(req.params.id);
-        console.log(req.body.note);
-        Note.update({ _id: req.params.id }, { note: req.body.note }, function ( res, err, raw) {
-            if (err) return console.log(err);
-            console.log('The raw response from Mongo was ', raw);
-            // console.log(res);
+        db.deleteMany({})
+        .then(function (results) {
+
+            console.log(results + "Deleted")
+          res.render("index")
         })
-        .then(function(results){
-            console.log(results);
-        })
-
-
-
-    // db.findById(req.params.id, function(result){
-    //     console.log(result)
-    // })
-    // if(req.params.id === )
-    // db.update
-})
-
+        .catch(function (err) {
+            // If an error occurred, log it
+            console.log(err);
+        });
+    });
 
 }
 
